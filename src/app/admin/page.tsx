@@ -1,15 +1,15 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { db } from '@/lib/firebase';
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 
 export default function AdminDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
-  const [feedbacks, setFeedbacks] = useState<any[]>([]);
+  const [feedbacks, setFeedbacks] = useState<Record<string, unknown>[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  
 
   const fetchFeedbacks = async () => {
     setIsLoading(true);
@@ -23,7 +23,7 @@ export default function AdminDashboard() {
       setFeedbacks(data);
     } catch (err) {
       console.error("Error fetching feedback:", err);
-      setError("Failed to load data. Make sure your Firebase security rules allow reading.");
+      alert("Failed to load data.");
     } finally {
       setIsLoading(false);
     }
@@ -72,7 +72,7 @@ export default function AdminDashboard() {
   let ratingCount = 0;
   feedbacks.forEach(f => {
     if (f.answers) {
-      Object.values(f.answers).forEach((val: any) => {
+      Object.values(f.answers as Record<string, string>).forEach((val: string) => {
         const num = parseInt(val);
         if (!isNaN(num) && num >= 1 && num <= 5 && val.length === 1) { // Basic heuristic for rating
           totalRating += num;

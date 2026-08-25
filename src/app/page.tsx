@@ -178,10 +178,24 @@ export default function Home() {
     return true;
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (currentStep === 0) {
       if (!name.trim()) return;
       if (!validatePhone(phone)) return;
+      
+      setIsCheckingPhone(true);
+      try {
+        const q = query(collection(db, 'feedback'), where('phone', '==', phone));
+        const querySnapshot = await getDocs(q);
+        if (!querySnapshot.empty) {
+          setPhoneError('Feedback has already been submitted using this phone number.');
+          setIsCheckingPhone(false);
+          return;
+        }
+      } catch (err) {
+        console.error("Error checking phone number:", err);
+      }
+      setIsCheckingPhone(false);
     }
     if (currentStep === 1 && !role) return;
     
