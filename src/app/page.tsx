@@ -229,8 +229,6 @@ export default function Home() {
     setIsSubmitting(true);
     try {
       await addDoc(collection(db, 'feedback'), {
-        name,
-        phone,
         role,
         answers,
         createdAt: serverTimestamp(),
