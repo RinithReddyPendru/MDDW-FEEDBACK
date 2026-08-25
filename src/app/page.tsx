@@ -262,6 +262,13 @@ export default function Home() {
         answers,
         createdAt: serverTimestamp(),
       });
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#ec4899', '#f43f5e', '#14b8a6', '#8b5cf6'],
+        zIndex: 9999
+      });
       setIsSubmitted(true);
     } catch (error) {
       console.error('Error saving document: ', error);
