@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { db } from '@/lib/firebase';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp, query, where, getDocs } from 'firebase/firestore';
 
 type Question = {
   id: string;
@@ -160,6 +160,7 @@ export default function Home() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [phoneError, setPhoneError] = useState('');
+  const [isCheckingPhone, setIsCheckingPhone] = useState(false);
 
   const currentQuestions = role === 'Pregnant Woman (గర్భిణీ స్త్రీ)' ? pwQuestions : 
                            (role === 'Asha Worker (ఆశా వర్కర్)' || role === 'ANM') ? ashaQuestions : [];
