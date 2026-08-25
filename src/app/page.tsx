@@ -42,63 +42,56 @@ Were you able to set whether you eat veg or non-veg in the app?`,
   },
   {
     id: 'pw_q5',
-    text: `5. యాప్లో ఆహారాన్ని నమోదు చేసిన తర్వాత, మీరు నమోదు చేసిన ఆహార వివరాలను సరిగ్గా చూపిస్తున్నాయా?
-After logging your food, does the app correctly show the food details you have entered?`,
-    type: 'radio',
-    options: ['Always (ఎల్లప్పుడూ)', 'Most of the Time (చాలా సందర్భాల్లో)', 'Sometimes (కొన్నిసార్లు)', 'No (కాదు)']
-  },
-  {
-    id: 'pw_q6',
-    text: `6. జననీ మిత్ర యాప్ లో ఫుడ్ స్కానర్ ఉపయోగించడం సులభమేనా?
+    text: `5. జననీ మిత్ర యాప్ లో ఫుడ్ స్కానర్ ఉపయోగించడం సులభమేనా?
 Is it easy to use food scanner in Janani Mitra App?`,
     type: 'radio',
     options: ['Very useful (చాలా ఉపయోగకరమైనది)', 'Not useful (ఉపయోగకరమైనది కాదు)', 'I have not used it yet (నేను ఇంకా ఉపయోగించలేదు)']
   },
   {
-    id: 'pw_q7',
-    text: `7. యాప్లోని ఆహార చిత్రాలు మీకు ఆహార పదార్థాలను గుర్తించడానికి సహాయపడుతున్నాయా?
+    id: 'pw_q6',
+    text: `6. యాప్లోని ఆహార చిత్రాలు మీకు ఆహార పదార్థాలను గుర్తించడానికి సహాయపడుతున్నాయా?
 Do the food images in the app help you identify the food items?`,
     type: 'radio',
     options: ['Very Helpful (చాలా సహాయపడుతున్నాయి)', 'Helpful (సహాయపడుతున్నాయి)', 'Somewhat Helpful (కొంతవరకు సహాయపడుతున్నాయి)', 'Not Helpful (సహాయపడటం లేదు)']
   },
   {
-    id: 'pw_q8',
-    text: `8. యాప్లో మీ రోజువారీ ఆహార వివరాలను చూడటం మీకు ఉపయోగకరంగా ఉందా?
+    id: 'pw_q7',
+    text: `7. యాప్లో మీ రోజువారీ ఆహార వివరాలను చూడటం మీకు ఉపయోగకరంగా ఉందా?
 Is it helpful for you to view your daily food details in the app?`,
     type: 'radio',
     options: ['Helpful (ఉపయోగకరంగా ఉంది)', 'Somewhat Helpful (కొంతవరకు ఉపయోగకరంగా ఉంది)', 'Not Helpful (ఉపయోగకరంగా లేదు)']
   },
   {
-    id: 'pw_q9',
-    text: `9. యాప్లో మీ ఆహార నమోదు ప్రక్రియను పూర్తి చేయడానికి ఎక్కువ సమయం పడుతుందా?
+    id: 'pw_q8',
+    text: `8. యాప్లో మీ ఆహార నమోదు ప్రక్రియను పూర్తి చేయడానికి ఎక్కువ సమయం పడుతుందా?
 Does it take a lot of time to complete your food logging in the app?`,
     type: 'radio',
     options: ['No, it is Quick (లేదు, త్వరగా పూర్తవుతుంది)', 'Takes Some Time (కొంత సమయం పడుతుంది)', 'Takes a Lot of Time (చాలా సమయం పడుతుంది)']
   },
   {
-    id: 'pw_q10',
-    text: `10. జననీ మిత్ర యాప్ను ప్రతిరోజూ ఉపయోగించడం మీకు సౌకర్యంగా ఉందా?
+    id: 'pw_q9',
+    text: `9. జననీ మిత్ర యాప్ను ప్రతిరోజూ ఉపయోగించడం మీకు సౌకర్యంగా ఉందా?
 Are you comfortable using the Janani Mitra app every day?`,
     type: 'radio',
     options: ['Yes (అవును)', 'Sometimes (కొన్నిసార్లు)', 'No (కాదు)']
   },
   {
-    id: 'pw_q11',
-    text: `11. గత వారంలో, మీరు ఎన్ని రోజులు మీ ఆహారాన్ని యాప్‌లో నమోదు చేశారు?
+    id: 'pw_q10',
+    text: `10. గత వారంలో, మీరు ఎన్ని రోజులు మీ ఆహారాన్ని యాప్‌లో నమోదు చేశారు?
 In the last week, how many days did you add your food?`,
     type: 'radio',
     options: ['Every day (ప్రతిరోజూ)', 'Most days (చాలా రోజులు)', 'A few days (కొన్ని రోజులు)', 'I could not (నేను నమోదు చేయలేకపోయాను)']
   },
   {
-    id: 'pw_q12',
-    text: `12. మీరు ఆహారాన్ని నమోదు చేయని రోజుల్లో, దానికి కారణం ఏమిటి?
+    id: 'pw_q11',
+    text: `11. మీరు ఆహారాన్ని నమోదు చేయని రోజుల్లో, దానికి కారణం ఏమిటి?
 On the days you did not add food, what was the reason?`,
     type: 'radio',
     options: ['Phone was not with me (ఫోన్ నా వద్ద లేదు)', 'I forgot (నేను మర్చిపోయాను)', 'It felt difficult (కష్టంగా అనిపించింది)', 'I was unwell (నాకు అనారోగ్యంగా ఉంది)', 'I added every day (నేను ప్రతిరోజూ నమోదు చేశాను)']
   },
   {
-    id: 'pw_q13',
-    text: `13. జననీ మిత్ర యాప్‌తో మీ మొత్తం అనుభవాన్ని రేట్ చేయండి:
+    id: 'pw_q12',
+    text: `12. జననీ మిత్ర యాప్‌తో మీ మొత్తం అనుభవాన్ని రేట్ చేయండి:
 Rate your overall experience with the Janani Mitra app (Out of 5 stars):`,
     type: 'rating'
   }
