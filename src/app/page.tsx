@@ -362,13 +362,6 @@ export default function Home() {
       <div className="absolute top-[40%] right-[10%] w-72 h-72 bg-fuchsia-200/30 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse-slow" style={{ animationDelay: '4s' }}></div>
       
       <div className="max-w-xl w-full bg-pink-50/85 backdrop-blur-2xl border border-pink-200 shadow-[0_10px_60px_-10px_rgba(236,72,153,0.35)] rounded-3xl overflow-hidden min-h-[550px] flex flex-col relative z-10 animate-fade-in">
-        {/* Progress Bar */}
-        <div className="w-full h-1.5 bg-pink-100">
-          <div 
-            className="h-full bg-gradient-to-r from-pink-500 to-rose-500 transition-all duration-700 ease-out" 
-            style={{ width: `${Math.max(2, (currentStep / Math.max(1, totalSteps - 1)) * 100)}%` }}
-          ></div>
-        </div>
         
         {/* Clean Header with Logo and Text separated */}
         <div className="w-full relative bg-pink-50/40 flex flex-col items-center justify-center pt-8 pb-6 border-b border-pink-100 shadow-sm">
