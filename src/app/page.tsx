@@ -505,16 +505,16 @@ export default function Home() {
                         {isLastQuestion ? (
                           <button
                             onClick={handleSubmit}
-                            disabled={(question.type === 'radio' || question.type === 'rating') && !answers[question.id]}
-                            className="flex-1 py-4 px-4 rounded-2xl shadow-lg shadow-blue-500/20 text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 disabled:opacity-50 disabled:shadow-none transition-all transform hover:-translate-y-0.5 active:translate-y-0"
-                          >
-                            Submit
+                              disabled={isSubmitting || ((question.type === 'radio' || question.type === 'rating') && !answers[question.id])}
+                              className="flex-1 py-4 px-4 rounded-2xl shadow-lg shadow-pink-500/20 text-base font-semibold text-white bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-700 hover:to-rose-600 disabled:opacity-50 disabled:shadow-none transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                            >
+                              {isSubmitting ? 'Submitting...' : 'Submit'}
                           </button>
                         ) : (
                           <button
                             onClick={handleNext}
                             disabled={(question.type === 'radio' || question.type === 'rating') && !answers[question.id]}
-                            className="flex-1 py-4 px-4 rounded-2xl shadow-lg shadow-blue-500/20 text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 disabled:opacity-50 disabled:shadow-none transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                            className="flex-1 py-4 px-4 rounded-2xl shadow-lg shadow-pink-500/20 text-base font-semibold text-white bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-700 hover:to-rose-600 disabled:opacity-50 disabled:shadow-none transition-all transform hover:-translate-y-0.5 active:translate-y-0"
                           >
                             Next
                           </button>
