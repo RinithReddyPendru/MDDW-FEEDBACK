@@ -63,13 +63,13 @@ const pwQuestions: Question[] = [
   },
   {
     id: 'pw_q10',
-    text: `10. మీరు ఆహారాన్ని నమోదు చేయని రోజుల్లో, దానికి కారణం ఏమిటి?\nOn the days you did not add food, what was the reason?`,
+    text: `9. మీరు ఆహారాన్ని నమోదు చేయని రోజుల్లో, దానికి కారణం ఏమిటి?\nOn the days you did not add food, what was the reason?`,
     type: 'radio',
     options: ['Phone was not with me (ఫోన్ నా వద్ద లేదు)', 'I forgot (నేను మర్చిపోయాను)', 'It felt difficult (కష్టంగా అనిపించింది)', 'I was unwell (నాకు అనారోగ్యంగా ఉంది)', 'I added every day (నేను ప్రతిరోజూ నమోదు చేశాను)']
   },
   {
     id: 'pw_q11',
-    text: `11. జననీ మిత్ర యాప్‌తో మీ మొత్తం అనుభవాన్ని రేట్ చేయండి:\nRate your overall experience with the Janani Mitra app (Out of 5 stars):`,
+    text: `10. జననీ మిత్ర యాప్‌తో మీ మొత్తం అనుభవాన్ని రేట్ చేయండి:\nRate your overall experience with the Janani Mitra app (Out of 5 stars):`,
     type: 'rating'
   }
 ];
@@ -137,7 +137,7 @@ const ashaQuestions: Question[] = [
   },
   {
     id: 'asha_q11',
-    text: `11. జననీ మిత్ర యాప్‌తో మీ మొత్తం అనుభవాన్ని రేట్ చేయండి:\nRate your overall experience with the Janani Mitra app (Out of 5 stars):`,
+    text: `10. జననీ మిత్ర యాప్‌తో మీ మొత్తం అనుభవాన్ని రేట్ చేయండి:\nRate your overall experience with the Janani Mitra app (Out of 5 stars):`,
     type: 'rating'
   }
 ];
