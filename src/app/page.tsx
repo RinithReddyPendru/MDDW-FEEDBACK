@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import confetti from 'canvas-confetti';
+import Mascot from '@/components/Mascot';
 import { db } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp, query, where, getDocs } from 'firebase/firestore';
 
@@ -281,7 +282,26 @@ export default function Home() {
 
   const renderProgressBar = () => {
     const progress = (currentStep / (totalSteps - 1)) * 100;
-    return (
+  
+  // Calculate Mascot Emotion
+  let mascotEmotion = 'happy';
+  if (isSubmitted) {
+    mascotEmotion = 'excited';
+  } else if (currentStep > 1 && currentStep - 2 < currentQuestions.length) {
+    const q = currentQuestions[currentStep - 2];
+    const ans = answers[q.id] || '';
+    const sadKeywords = ['Difficult', 'Not', 'could not', 'Unable', 'No', 'కష్టంగా', 'కాదు', 'లేదు'];
+    const excitedKeywords = ['Easy', 'Very', 'Every day', 'Always', 'సులభంగా', 'ఎల్లప్పుడూ', 'చాలా'];
+    
+    if (ans === '1' || ans === '2' || sadKeywords.some(k => ans.includes(k))) {
+      mascotEmotion = 'sad';
+    } else if (ans === '4' || ans === '5' || excitedKeywords.some(k => ans.includes(k))) {
+      mascotEmotion = 'excited';
+    }
+  }
+
+  return (
+
       <div className="w-full bg-gray-200 h-2 mb-6 rounded-full overflow-hidden">
         <div 
           className="bg-pink-500 h-2 transition-all duration-300 ease-out"
@@ -292,7 +312,26 @@ export default function Home() {
   };
 
   if (isSubmitted) {
-    return (
+  
+  // Calculate Mascot Emotion
+  let mascotEmotion = 'happy';
+  if (isSubmitted) {
+    mascotEmotion = 'excited';
+  } else if (currentStep > 1 && currentStep - 2 < currentQuestions.length) {
+    const q = currentQuestions[currentStep - 2];
+    const ans = answers[q.id] || '';
+    const sadKeywords = ['Difficult', 'Not', 'could not', 'Unable', 'No', 'కష్టంగా', 'కాదు', 'లేదు'];
+    const excitedKeywords = ['Easy', 'Very', 'Every day', 'Always', 'సులభంగా', 'ఎల్లప్పుడూ', 'చాలా'];
+    
+    if (ans === '1' || ans === '2' || sadKeywords.some(k => ans.includes(k))) {
+      mascotEmotion = 'sad';
+    } else if (ans === '4' || ans === '5' || excitedKeywords.some(k => ans.includes(k))) {
+      mascotEmotion = 'excited';
+    }
+  }
+
+  return (
+
       <main className="min-h-screen relative overflow-hidden p-6 flex items-center justify-center bg-gradient-to-br from-pink-50 via-rose-100 to-pink-100 animate-gradient-x">
         {/* Decorative Background Blobs - All Pink Shades */}
         <div className="absolute top-[-10%] left-[-10%] w-[40rem] h-[40rem] bg-pink-300/40 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-pulse-slow"></div>
@@ -331,7 +370,26 @@ export default function Home() {
     );
   }
 
+
+  // Calculate Mascot Emotion
+  let mascotEmotion = 'happy';
+  if (isSubmitted) {
+    mascotEmotion = 'excited';
+  } else if (currentStep > 1 && currentStep - 2 < currentQuestions.length) {
+    const q = currentQuestions[currentStep - 2];
+    const ans = answers[q.id] || '';
+    const sadKeywords = ['Difficult', 'Not', 'could not', 'Unable', 'No', 'కష్టంగా', 'కాదు', 'లేదు'];
+    const excitedKeywords = ['Easy', 'Very', 'Every day', 'Always', 'సులభంగా', 'ఎల్లప్పుడూ', 'చాలా'];
+    
+    if (ans === '1' || ans === '2' || sadKeywords.some(k => ans.includes(k))) {
+      mascotEmotion = 'sad';
+    } else if (ans === '4' || ans === '5' || excitedKeywords.some(k => ans.includes(k))) {
+      mascotEmotion = 'excited';
+    }
+  }
+
   return (
+
     <main className="min-h-screen relative overflow-hidden flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8 bg-gradient-to-br from-pink-50 via-rose-100 to-pink-100 animate-gradient-x">
       {/* Decorative Background Blobs - All Pink Shades */}
       <div className="absolute top-[-10%] left-[-10%] w-[40rem] h-[40rem] bg-pink-300/40 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-pulse-slow"></div>
@@ -473,7 +531,26 @@ export default function Home() {
 
                 if (!question) return null;
 
-                return (
+              
+  // Calculate Mascot Emotion
+  let mascotEmotion = 'happy';
+  if (isSubmitted) {
+    mascotEmotion = 'excited';
+  } else if (currentStep > 1 && currentStep - 2 < currentQuestions.length) {
+    const q = currentQuestions[currentStep - 2];
+    const ans = answers[q.id] || '';
+    const sadKeywords = ['Difficult', 'Not', 'could not', 'Unable', 'No', 'కష్టంగా', 'కాదు', 'లేదు'];
+    const excitedKeywords = ['Easy', 'Very', 'Every day', 'Always', 'సులభంగా', 'ఎల్లప్పుడూ', 'చాలా'];
+    
+    if (ans === '1' || ans === '2' || sadKeywords.some(k => ans.includes(k))) {
+      mascotEmotion = 'sad';
+    } else if (ans === '4' || ans === '5' || excitedKeywords.some(k => ans.includes(k))) {
+      mascotEmotion = 'excited';
+    }
+  }
+
+  return (
+
                   <>
                     <div className="mb-8">
                       <span className="inline-block px-3 py-1 rounded-full bg-blue-100 text-xs font-bold tracking-wider text-blue-700 uppercase mb-4 shadow-sm">
@@ -583,6 +660,7 @@ export default function Home() {
           )}
         </div>
       </div>
+      <Mascot emotion={mascotEmotion} />
     </main>
   );
 }
