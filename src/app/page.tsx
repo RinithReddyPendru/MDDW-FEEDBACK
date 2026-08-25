@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import confetti from 'canvas-confetti';
 import { db } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp, query, where, getDocs } from 'firebase/firestore';
 
