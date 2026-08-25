@@ -158,6 +158,7 @@ export default function Home() {
   
   // UI State
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [phoneError, setPhoneError] = useState('');
 
   const currentQuestions = role === 'Pregnant Woman (గర్భిణీ స్త్రీ)' ? pwQuestions : 
@@ -217,10 +218,24 @@ export default function Home() {
     }
   };
 
-  const handleSubmit = (e?: React.FormEvent) => {
+  const handleSubmit = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-    console.log({ name, phone, role, answers });
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    try {
+      await addDoc(collection(db, 'feedback'), {
+        name,
+        phone,
+        role,
+        answers,
+        createdAt: serverTimestamp(),
+      });
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Error saving document: ', error);
+      alert('There was an error submitting your feedback. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const renderProgressBar = () => {
@@ -259,7 +274,7 @@ export default function Home() {
               setRole('');
               setAnswers({});
             }}
-            className="px-8 py-3.5 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-2xl transition-all shadow-lg shadow-blue-500/20 transform hover:-translate-y-0.5"
+            className="px-8 py-3.5 bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white font-semibold rounded-2xl transition-all shadow-lg shadow-pink-500/20 transform hover:-translate-y-0.5"
           >
             Submit Another Response
           </button>
@@ -349,7 +364,7 @@ export default function Home() {
                 <button
                   onClick={handleNext}
                   disabled={!name.trim() || phone.length !== 10}
-                  className="w-full py-4 px-4 rounded-2xl shadow-lg shadow-blue-500/20 text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                  className="w-full py-4 px-4 rounded-2xl shadow-lg shadow-pink-500/20 text-base font-semibold text-white bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-700 hover:to-rose-600 disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed transition-all transform hover:-translate-y-0.5 active:translate-y-0"
                 >
                   Start Feedback
                 </button>
