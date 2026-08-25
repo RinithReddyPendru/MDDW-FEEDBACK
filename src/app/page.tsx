@@ -349,7 +349,7 @@ export default function Home() {
                     id="name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="block w-full px-5 py-3.5 bg-white border border-gray-200 rounded-2xl shadow-sm focus:bg-white focus:ring-2 focus:ring-pink-400 focus:border-transparent text-gray-800 placeholder-gray-400 transition-all font-medium"
+                    className="block w-full px-5 py-3.5 bg-white border border-gray-200 rounded-2xl shadow-sm focus:bg-white focus:ring-2 focus:ring-pink-400 focus:border-transparent text-black placeholder-gray-400 transition-all font-medium"
                     placeholder="Your full name"
                   />
                 </div>
@@ -368,7 +368,7 @@ export default function Home() {
                       setPhone(val);
                       if (phoneError && val.length === 10) setPhoneError('');
                     }}
-                    className={`block w-full px-5 py-3.5 bg-white border rounded-2xl shadow-sm focus:bg-white focus:ring-2 focus:ring-pink-400 focus:border-transparent text-gray-800 placeholder-gray-400 transition-all font-medium ${phoneError ? 'border-red-400 focus:ring-red-400' : 'border-gray-200'}`}
+                    className={`block w-full px-5 py-3.5 bg-white border rounded-2xl shadow-sm focus:bg-white focus:ring-2 focus:ring-pink-400 focus:border-transparent text-black placeholder-gray-400 transition-all font-medium ${phoneError ? 'border-red-400 focus:ring-red-400' : 'border-gray-200'}`}
                     placeholder="10-digit mobile number"
                   />
                   {phoneError && <p className="mt-2 text-sm font-medium text-red-500">{phoneError}</p>}
@@ -503,7 +503,7 @@ export default function Home() {
                             rows={6}
                             value={answers[question.id] || ''}
                             onChange={(e) => handleAnswerChange(question.id, e.target.value)}
-                            className="w-full px-5 py-4 bg-white border border-gray-200 rounded-2xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-transparent text-gray-800 placeholder-gray-400 transition-all font-medium"
+                            className="w-full px-5 py-4 bg-white border border-gray-200 rounded-2xl shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-transparent text-black placeholder-gray-400 transition-all font-medium"
                             placeholder="Type your suggestions here... / మీ సలహాలను ఇక్కడ రాయండి..."
                           />
                         </div>

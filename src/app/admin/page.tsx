@@ -124,17 +124,17 @@ export default function AdminDashboard() {
                   <th className="p-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Name</th>
                   <th className="p-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Phone</th>
                   <th className="p-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Role</th>
-                  <th className="p-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Answers</th>
+                  
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
                 {isLoading ? (
                   <tr>
-                    <td colSpan={5} className="p-8 text-center text-gray-400">Loading feedback...</td>
+                    <td colSpan={4} className="p-8 text-center text-gray-400">Loading feedback...</td>
                   </tr>
                 ) : feedbacks.length === 0 ? (
                   <tr>
-                    <td colSpan={5} className="p-8 text-center text-gray-400">No feedback submitted yet.</td>
+                    <td colSpan={4} className="p-8 text-center text-gray-400">No feedback submitted yet.</td>
                   </tr>
                 ) : (
                   feedbacks.map((f) => (
@@ -149,9 +149,7 @@ export default function AdminDashboard() {
                           {(f.role as string)?.split(' (')[0] || 'N/A'}
                         </span>
                       </td>
-                      <td className="p-4 text-sm text-gray-600 max-w-xs truncate" title={JSON.stringify(f.answers)}>
-                        {Object.entries(f.answers || {}).map(([key, val]) => `${key}: ${val}`).join(', ')}
-                      </td>
+                      
                     </tr>
                   ))
                 )}
