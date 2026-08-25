@@ -328,11 +328,11 @@ export default function Home() {
         {/* Clean Header with Logo and Text separated */}
         <div className="w-full relative bg-pink-50/40 flex flex-col items-center justify-center pt-8 pb-6 border-b border-pink-100 shadow-sm">
            
-           <div className="w-28 h-28 mb-4 flex items-center justify-center">
+           <div className="w-28 h-28 rounded-full bg-white flex items-center justify-center overflow-hidden mb-4 shadow-md mx-auto border border-gray-100">
             <img 
               src="/final_logo.png" 
               alt="Janani Mitra Logo" 
-              className="w-full h-full object-contain mix-blend-multiply" 
+              className="w-[95%] h-[95%] object-contain scale-[1.1]" 
             />
           </div>
            
