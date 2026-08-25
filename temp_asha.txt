@@ -1,0 +1,66 @@
+
+  {
+    id: 'asha_q1',
+    text: `1. ఒక కొత్త తల్లిని రిజిస్టర్ చేయడానికి మీకు ఎంత సమయం పడుతుంది?\nHow long does it take you to register one new mother?`,
+    type: 'radio',
+    options: ['Under 5 minutes (5 నిమిషాలలోపు)', '5 to 10 minutes (5 నుండి 10 నిమిషాలు)', 'More than 10 minutes (10 నిమిషాల కంటే ఎక్కువ)']
+  },
+  {
+    id: 'asha_q2',
+    text: `2. తల్లి ప్రతిరోజూ యాప్‌ను తెరిచి తాను తిన్న ఆహారాన్ని నమోదు చేయగలుగుతోందా?\nIs the mother able to open the app and log her food every day?`,
+    type: 'radio',
+    options: ['Always (ఎల్లప్పుడూ)', 'Most of the Time (చాలా సమయాల్లో)', 'Sometimes (అప్పుడప్పుడు)', 'Not Able to Do It (చేయలేకపోతుంది)']
+  },
+  {
+    id: 'asha_q3',
+    text: `3. గర్భిణీ స్త్రీల కోసం IFA మాత్రలను ట్రాక్ చేయడం ఉపయోగకరంగా ఉందని మీరు భావిస్తున్నారా?\nDo you think tracking IFA tablets for pregnant women is useful?`,
+    type: 'radio',
+    options: ['Very Useful and Needed (చాలా ఉపయోగకరం మరియు అవసరం)', 'Useful but Not Essential (ఉపయోగకరం కానీ తప్పనిసరి కాదు)', 'Not Very Useful (అంత ఉపయోగకరం కాదు)', 'Not Needed (అసలు అవసరం లేదు)']
+  },
+  {
+    id: 'asha_q4',
+    text: `4. "Your Baby" స్క్రీన్‌లో శిశువు వివరాలు మీకు ఉపయోగకరంగా ఉన్నాయా?\nIs the "Your Baby" screen showing the baby's details helpful to you?`,
+    type: 'radio',
+    options: ['Helpful (ఉపయోగకరం)', 'Somewhat Helpful (కొంత వరకు ఉపయోగకరం)', 'Not Helpful (ఉపయోగకరం కాదు)']
+  },
+  {
+    id: 'asha_q5',
+    text: `5. మీ PIN ఉపయోగించి ASHA Mode (ASHA Visit)లోకి లాగిన్ అవ్వగలుగుతున్నారా?\nAre you able to log in to ASHA Mode (ASHA Visit) using your PIN?`,
+    type: 'radio',
+    options: ['Yes, Easily (అవును, సులభంగా)', 'With Some Difficulty (కొంత కష్టంగా)', 'Unable to Login (లాగిన్ కాలేకపోతున్నాను)']
+  },
+  {
+    id: 'asha_q6',
+    text: `6. గత 30 రోజులకు తల్లి తీసుకున్న Food Group లను మీరు ట్రాక్ చేయగలుగుతున్నారా?\nAre you able to track the mother's food consumption by food group for the last 30 days?`,
+    type: 'radio',
+    options: ['Easily (సులభంగా)', 'With Some Difficulty (కొంత కష్టంగా)', 'Unable to Track (ట్రాక్ చేయలేకపోతున్నాను)']
+  },
+  {
+    id: 'asha_q7',
+    text: `7. యాప్‌ను ఉపయోగించి Food Recall ను సులభంగా చేయగలుగుతున్నారా?\nAre you able to perform a Food Recall of a mother using the app?`,
+    type: 'radio',
+    options: ['Easily (సులభంగా)', 'With Some Difficulty (కొంత కష్టంగా)', 'Unable to Do It (చేయలేకపోతున్నాను)']
+  },
+  {
+    id: 'asha_q8',
+    text: `8. ASHA Visit Summary మీకు ఉపయోగకరంగా ఉందా?\nIs the ASHA Visit Summary useful and easy for you to understand?`,
+    type: 'radio',
+    options: ['Helpful and Clear (ఉపయోగకరం మరియు స్పష్టంగా ఉంది)', 'Somewhat Helpful (కొంత ఉపయోగకరం)', 'Not Helpful (ఉపయోగకరం కాదు)']
+  },
+  {
+    id: 'asha_q9',
+    text: `9. ఒక తల్లి యాప్‌ను ఉపయోగించడం మానేసినప్పుడు, సాధారణంగా కారణం ఏమిటి?\nWhen a mother stops using the app, what is the usual reason?`,
+    type: 'radio',
+    options: ['No phone with her (ఆమె వద్ద ఫోన్ లేదు)', 'She forgets (ఆమె మర్చిపోతుంది)', 'She finds it hard (ఆమెకు కష్టంగా అనిపిస్తుంది)', 'She lost interest (ఆమెకు ఆసక్తి పోయింది)', 'This has not happened (ఇలా జరగలేదు)']
+  },
+  {
+    id: 'asha_q10',
+    text: `10. ఫీల్డ్‌లో యాప్‌ను ఉపయోగించడంలో అత్యంత కష్టమైన భాగం ఏమిటి?\nWhat is the hardest part of using the app in the field?`,
+    type: 'radio',
+    options: ['Network problem (నెట్‌వర్క్ సమస్య)', 'Login or PIN (లాగిన్ లేదా PIN సమస్య)', 'Doing the food recall (ఆహార నమోదు చేయడం)', 'Registering mothers (తల్లులను రిజిస్టర్ చేయడం)', 'Nothing, it works fine (ఏమీ లేదు, ఇది బాగా పనిచేస్తుంది)']
+  },
+  {
+    id: 'asha_q11',
+    text: `11. జననీ మిత్ర యాప్‌తో మీ మొత్తం అనుభవాన్ని రేట్ చేయండి:\nRate your overall experience with the Janani Mitra app (Out of 5 stars):`,
+    type: 'rating'
+  }

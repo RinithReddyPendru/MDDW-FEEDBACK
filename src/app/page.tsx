@@ -47,7 +47,7 @@ const pwQuestions: Question[] = [
     id: 'pw_q6',
     text: `6. యాప్‌లో ఉన్న వీడియోలు మీకు ఉపయోగకరంగా ఉన్నాయా?\nAre the videos in the app useful to you?`,
     type: 'radio',
-    options: ['Very Useful (చాలా ఉపయోగకరం)', 'Somewhat Useful (కొంత వరకు ఉపయోగకరం)', 'Not Useful (ఉపయోగకరం కాదు)']
+    options: ['Very Useful (చాలా ఉపయోగకరం)', 'Somewhat Useful (కొంత వరకు ఉపయోగకరం)', 'Not Useful (ఉపయోగకరం కాదు)', 'I have not used it yet (నేను ఇంకా చూడలేదు)']
   },
   {
     id: 'pw_q7',
