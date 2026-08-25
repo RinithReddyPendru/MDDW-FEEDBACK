@@ -338,61 +338,6 @@ export default function Home() {
           {currentStep > 0 && renderProgressBar()}
 
           {/* STEP 0: Personal Info */}
-          {currentStep === 0 && (
-            <div className="flex-grow flex flex-col justify-center animate-fade-in space-y-7">
-              <div className="text-center mb-4">
-                <h3 className="text-2xl font-bold text-gray-900 tracking-tight">Welcome / స్వాగతం</h3>
-                <p className="text-gray-500 mt-2 font-medium">Please enter your details to begin</p>
-              </div>
-
-              <div className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
-                    1. పేరు (Name) <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    className="block w-full px-5 py-3.5 bg-white border border-gray-200 rounded-2xl shadow-sm focus:bg-white focus:ring-2 focus:ring-pink-400 focus:border-transparent text-black placeholder-gray-400 transition-all font-medium"
-                    placeholder="Your full name"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
-                    2. ఫోన్ నెంబరు (Phone Number) <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    value={phone}
-                    maxLength={10}
-                    onChange={(e) => {
-                      const val = e.target.value.replace(/\D/g, ''); 
-                      setPhone(val);
-                      if (phoneError && val.length === 10) setPhoneError('');
-                    }}
-                    className={`block w-full px-5 py-3.5 bg-white border rounded-2xl shadow-sm focus:bg-white focus:ring-2 focus:ring-pink-400 focus:border-transparent text-black placeholder-gray-400 transition-all font-medium ${phoneError ? 'border-red-400 focus:ring-red-400' : 'border-gray-200'}`}
-                    placeholder="10-digit mobile number"
-                  />
-                  {phoneError && <p className="mt-2 text-sm font-medium text-red-500">{phoneError}</p>}
-                </div>
-              </div>
-
-              <div className="mt-auto pt-8">
-                <button
-                  onClick={handleNext}
-                  disabled={isCheckingPhone || !name.trim() || phone.length !== 10}
-                  className="w-full py-4 px-4 rounded-2xl shadow-lg shadow-pink-500/20 text-base font-semibold text-white bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-700 hover:to-rose-600 disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed transition-all transform hover:-translate-y-0.5 active:translate-y-0"
-                >
-                  {isCheckingPhone ? 'Checking...' : 'Start Feedback'}
-                </button>
-              </div>
-            </div>
-          )}
-
           {/* STEP 1: Role Selection */}
           {currentStep === 1 && (
             <div className="flex-grow flex flex-col justify-center animate-fade-in">
