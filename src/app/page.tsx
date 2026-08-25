@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import confetti from 'canvas-confetti';
 import { db } from '@/lib/firebase';
-import { collection, addDoc, serverTimestamp,   getDocs } from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 type Question = {
   id: string;
@@ -176,8 +176,7 @@ export default function Home() {
   // UI State
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [phoneError, setPhoneError] = useState('');
-  
+    
   const currentQuestions = role === 'Pregnant Woman (గర్భిణీ స్త్రీ)' ? pwQuestions : 
                            (role === 'Asha Worker (ఆశా వర్కర్)' || role === 'ANM') ? ashaQuestions : [];
 
