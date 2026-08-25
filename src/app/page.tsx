@@ -291,6 +291,13 @@ export default function Home() {
         <div className="absolute bottom-[-10%] right-[-10%] w-[40rem] h-[40rem] bg-rose-300/30 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
 
         <div className="max-w-md w-full bg-pink-50/85 backdrop-blur-xl border border-pink-200 shadow-[0_20px_60px_-15px_rgba(236,72,153,0.15)] rounded-3xl p-10 text-center animate-fade-in relative z-10 flex flex-col">
+          <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center overflow-hidden mb-6 shadow-md mx-auto border border-gray-100">
+            <img 
+              src="/final_logo.png" 
+              alt="Janani Mitra Logo" 
+              className="w-[95%] h-[95%] object-contain scale-[1.1]" 
+            />
+          </div>
           <div className="w-20 h-20 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm border border-green-100">
             <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
