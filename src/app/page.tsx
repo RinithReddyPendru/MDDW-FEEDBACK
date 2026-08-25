@@ -12,57 +12,52 @@ type Question = {
 };
 
 const pwQuestions: Question[] = [
+  
   {
     id: 'pw_q1',
-    text: `1. జననీ మిత్ర యాప్‌ను మీ ఫోన్‌లో ఎవరు ఇన్‌స్టాల్ చేశారు?\nWho installed the Janani Mitra app on your phone?`,
-    type: 'radio',
-    options: ['ASHA Worker (ఆశా వర్కర్)', 'ANM', 'Family Member (కుటుంబ సభ్యులు)', 'I did it myself (నేనే చేసుకున్నాను)']
-  },
-  {
-    id: 'pw_q2',
-    text: `2. మీ PIN ఉపయోగించి యాప్‌లోకి లాగిన్ అవ్వడం సులభంగా ఉందా?\nAre you able to login to the app easily using your PIN?`,
+    text: `1. మీ PIN ఉపయోగించి యాప్‌లోకి లాగిన్ అవ్వడం సులభంగా ఉందా?\nAre you able to login to the app easily using your PIN?`,
     type: 'radio',
     options: ['Yes, Easily (అవును, సులభంగా)', 'With Some Difficulty (కొంత కష్టంగా)', 'Unable to Login (లాగిన్ కాలేకపోతున్నాను)']
   },
   {
-    id: 'pw_q3',
-    text: `3. మీరు తిన్న ఆహారాన్ని యాప్‌లో వెతికినప్పుడు, మీరు దానిని సులభంగా కనుగొనగలుగుతున్నారా?\nWhen you look for the food you ate, are you able to find it in the app?`,
+    id: 'pw_q2',
+    text: `2. మీరు తిన్న ఆహారాన్ని యాప్‌లో వెతికినప్పుడు, మీరు దానిని సులభంగా కనుగొనగలుగుతున్నారా?\nWhen you look for the food you ate, are you able to find it in the app?`,
     type: 'radio',
     options: ['Yes, easily (అవును, సులభంగా దొరుకుతుంది)', "Sometimes I can't find it (కొన్నిసార్లు దొరకదు)", "Often I can't find it (చాలాసార్లు దొరకదు)"]
   },
   {
-    id: 'pw_q4',
-    text: `4. మీరు యాప్‌లో శాఖాహారం (వెజ్) లేదా మాంసాహారం (నాన్-వెజ్) తింటారో సెట్ చేయగలిగారా?\nWere you able to set whether you eat veg or non-veg in the app?`,
+    id: 'pw_q3',
+    text: `3. మీరు యాప్‌లో శాఖాహారం (వెజ్) లేదా మాంసాహారం (నాన్-వెజ్) తింటారో సెట్ చేయగలిగారా?\nWere you able to set whether you eat veg or non-veg in the app?`,
     type: 'radio',
     options: ['Yes, easily (అవును, సులభంగా సెట్ చేశాను)', 'With some difficulty (కొంత కష్టంగా సెట్ చేశాను)', "I don't know how (ఎలా చేయాలో తెలియదు)"]
   },
   {
-    id: 'pw_q5',
-    text: `5. మీరు తిన్న ఆహారం ప్లేట్ ఫోటో తీసి యాప్‌లో పెట్టడం సులభంగా ఉందా?\nIs it easy to take a photo of your food plate and upload it in the app?`,
+    id: 'pw_q4',
+    text: `4. మీరు తిన్న ఆహారం ప్లేట్ ఫోటో తీసి యాప్‌లో పెట్టడం సులభంగా ఉందా?\nIs it easy to take a photo of your food plate and upload it in the app?`,
     type: 'radio',
     options: ['Yes, Easily (అవును, సులభంగా)', 'With Some Difficulty (కొంత కష్టంగా)', 'Unable to Do It (చేయలేకపోతున్నాను)']
   },
   {
-    id: 'pw_q6',
-    text: `6. యాప్‌ను ఉపయోగించడానికి మీ కుటుంబ సభ్యులు మీకు సహాయం చేస్తున్నారా?\nAre your family members supporting you to use the app?`,
+    id: 'pw_q5',
+    text: `5. యాప్‌ను ఉపయోగించడానికి మీ కుటుంబ సభ్యులు మీకు సహాయం చేస్తున్నారా?\nAre your family members supporting you to use the app?`,
     type: 'radio',
     options: ['Yes, Very Supportive (అవును, బాగా సహాయం చేస్తున్నారు)', 'Somewhat Supportive (కొంత వరకు సహాయం చేస్తున్నారు)', 'Not Supportive (సహాయం చేయడం లేదు)', 'I have not used it yet (నేను ఇంకా యాప్‌ను ఉపయోగించలేదు)']
   },
   {
-    id: 'pw_q7',
-    text: `7. యాప్‌లో ఉన్న వీడియోలు మీకు ఉపయోగకరంగా ఉన్నాయా?\nAre the videos in the app useful to you?`,
+    id: 'pw_q6',
+    text: `6. యాప్‌లో ఉన్న వీడియోలు మీకు ఉపయోగకరంగా ఉన్నాయా?\nAre the videos in the app useful to you?`,
     type: 'radio',
     options: ['Very Useful (చాలా ఉపయోగకరం)', 'Somewhat Useful (కొంత వరకు ఉపయోగకరం)', 'Not Useful (ఉపయోగకరం కాదు)']
   },
   {
-    id: 'pw_q8',
-    text: `8. ఆహారం నమోదు చేయమని యాప్ నుండి వచ్చే రిమైండర్‌లు (నోటిఫికేషన్‌లు) ఉపయోగకరంగా ఉన్నాయా?\nAre the notifications/reminders from the app helpful?`,
+    id: 'pw_q7',
+    text: `7. ఆహారం నమోదు చేయమని యాప్ నుండి వచ్చే రిమైండర్‌లు (నోటిఫికేషన్‌లు) ఉపయోగకరంగా ఉన్నాయా?\nAre the notifications/reminders from the app helpful?`,
     type: 'radio',
     options: ['Helpful (ఉపయోగకరం)', 'Somewhat Helpful (కొంత వరకు ఉపయోగకరం)', 'Not Helpful (ఉపయోగకరం కాదు)']
   },
   {
-    id: 'pw_q9',
-    text: `9. గత వారంలో, మీరు ఎన్ని రోజులు మీ ఆహారాన్ని యాప్‌లో నమోదు చేశారు?\nIn the last week, how many days did you add your food?`,
+    id: 'pw_q8',
+    text: `8. గత వారంలో, మీరు ఎన్ని రోజులు మీ ఆహారాన్ని యాప్‌లో నమోదు చేశారు?\nIn the last week, how many days did you add your food?`,
     type: 'radio',
     options: ['Every day (ప్రతిరోజూ)', 'Most days (చాలా రోజులు)', 'A few days (కొన్ని రోజులు)', 'I could not (నేను నమోదు చేయలేకపోయాను)']
   },
