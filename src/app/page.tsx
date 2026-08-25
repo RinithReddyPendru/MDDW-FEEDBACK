@@ -328,13 +328,13 @@ export default function Home() {
         {/* Clean Header with Logo and Text separated */}
         <div className="w-full relative bg-pink-50/40 flex flex-col items-center justify-center pt-8 pb-6 border-b border-pink-100 shadow-sm">
            
-           <div className="w-24 h-24 rounded-full shadow-[0_0_20px_rgba(236,72,153,0.4)] border-4 border-white ring-4 ring-pink-50 overflow-hidden mb-4 bg-white flex items-center justify-center">
-             <img 
-               src="/final_logo.png" 
-               alt="Janani Mitra Logo" 
-               className="w-full h-full object-cover" 
-             />
-           </div>
+           <div className="w-28 h-28 mb-4 flex items-center justify-center">
+            <img 
+              src="/final_logo.png" 
+              alt="Janani Mitra Logo" 
+              className="w-full h-full object-contain mix-blend-multiply" 
+            />
+          </div>
            
            <div className="text-center w-full px-4 pb-1">
              <h1 className="text-3xl font-extrabold bg-gradient-to-r from-pink-600 to-rose-500 bg-clip-text text-transparent drop-shadow-sm pb-2 leading-normal">
