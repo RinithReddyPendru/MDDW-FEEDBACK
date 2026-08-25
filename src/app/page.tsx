@@ -167,7 +167,7 @@ const ashaQuestions: Question[] = [
 ];
 
 export default function Home() {
-  const [currentStep, setCurrentStep] = useState(0);
+  const [currentStep, setCurrentStep] = useState(1);
   
   // Form State
   const [name, setName] = useState('');
@@ -189,35 +189,8 @@ export default function Home() {
   // Total steps: Intro(0) + Role(1) + Questions(length)
   const totalSteps = 2 + currentQuestions.length;
 
-  const validatePhone = (value: string) => {
-    const regex = /^\d{10}$/;
-    if (!regex.test(value)) {
-      setPhoneError('Phone number must be exactly 10 digits.');
-      return false;
-    }
-    setPhoneError('');
-    return true;
-  };
-
+  
   const handleNext = async () => {
-    if (currentStep === 0) {
-      if (!name.trim()) return;
-      if (!validatePhone(phone)) return;
-      
-      setIsCheckingPhone(true);
-      try {
-        const q = query(collection(db, 'feedback'), where('phone', '==', phone));
-        const querySnapshot = await getDocs(q);
-        if (!querySnapshot.empty) {
-          setPhoneError('Feedback has already been submitted using this phone number.');
-          setIsCheckingPhone(false);
-          return;
-        }
-      } catch (err) {
-        console.error("Error checking phone number:", err);
-      }
-      setIsCheckingPhone(false);
-    }
     if (currentStep === 1 && !role) return;
     
     // Auto-scroll to top on step change
@@ -450,14 +423,7 @@ export default function Home() {
                 ))}
               </div>
 
-              <div className="mt-auto pt-10 flex space-x-4">
-                <button
-                  onClick={handlePrev}
-                  className="flex-1 py-3.5 px-4 border border-gray-200 rounded-2xl shadow-sm text-base font-semibold text-gray-600 bg-white hover:bg-gray-50 transition-all"
-                >
-                  Back
-                </button>
-              </div>
+              
             </div>
           )}
 
