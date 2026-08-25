@@ -100,7 +100,7 @@ const ashaQuestions: Question[] = [
   },
   {
     id: 'asha_q4',
-    text: '4. "Your Baby" స్క్రీన్‌లో శిశువు వివరాలు మీకు ఉపయోగకరంగా ఉన్నాయా?\nIs the "Your Baby" screen showing the baby\'s details helpful to you?',
+    text: '4. "Your Baby" స్క్రీన్‌లో శిశువు వివరాలు మీకు ఉపయోగకరంగా ఉన్నాయా?\nIs the "Your Baby" screen showing the baby's details helpful to you?',
     type: 'radio',
     options: ['Helpful (ఉపయోగకరం)', 'Somewhat Helpful (కొంత వరకు ఉపయోగకరం)', 'Not Helpful (ఉపయోగకరం కాదు)']
   },
@@ -112,7 +112,7 @@ const ashaQuestions: Question[] = [
   },
   {
     id: 'asha_q6',
-    text: '6. గత 30 రోజులకు తల్లి తీసుకున్న Food Group లను మీరు ట్రాక్ చేయగలుగుతున్నారా?\nAre you able to track the mother\'s food consumption by food group for the last 30 days?',
+    text: '6. గత 30 రోజులకు తల్లి తీసుకున్న Food Group లను మీరు ట్రాక్ చేయగలుగుతున్నారా?\nAre you able to track the mother's food consumption by food group for the last 30 days?',
     type: 'radio',
     options: ['Easily (సులభంగా)', 'With Some Difficulty (కొంత కష్టంగా)', 'Unable to Track (ట్రాక్ చేయలేకపోతున్నాను)']
   },
@@ -381,7 +381,7 @@ export default function Home() {
                   disabled={isCheckingPhone || !name.trim() || phone.length !== 10}
                   className="w-full py-4 px-4 rounded-2xl shadow-lg shadow-pink-500/20 text-base font-semibold text-white bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-700 hover:to-rose-600 disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed transition-all transform hover:-translate-y-0.5 active:translate-y-0"
                 >
-                  {isCheckingPhone ? \'Checking...\' : \'Start Feedback\'}
+                  {isCheckingPhone ? 'Checking...' : 'Start Feedback'}
                 </button>
               </div>
             </div>
