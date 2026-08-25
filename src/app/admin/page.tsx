@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState } from 'react';
@@ -7,7 +8,7 @@ import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 export default function AdminDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
-  const [feedbacks, setFeedbacks] = useState<Record<string, unknown>[]>([]);
+  const [feedbacks, setFeedbacks] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   
 
@@ -64,8 +65,8 @@ export default function AdminDashboard() {
   }
 
   const totalResponses = feedbacks.length;
-  const ashaCount = feedbacks.filter(f => f.role?.includes('Asha')).length;
-  const pwCount = feedbacks.filter(f => f.role?.includes('Pregnant')).length;
+  const ashaCount = feedbacks.filter(f => (f.role as string)?.includes('Asha')).length;
+  const pwCount = feedbacks.filter(f => (f.role as string)?.includes('Pregnant')).length;
   
   // Calculate average rating (assuming q5 or q11 is the rating id, let's look for any rating answer)
   let totalRating = 0;
@@ -144,8 +145,8 @@ export default function AdminDashboard() {
                       <td className="p-4 text-sm font-medium text-gray-900">{f.name || 'Anonymous'}</td>
                       <td className="p-4 text-sm text-gray-600">{f.phone || 'N/A'}</td>
                       <td className="p-4 text-sm">
-                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${f.role?.includes('Asha') ? 'bg-blue-50 text-blue-700' : 'bg-emerald-50 text-emerald-700'}`}>
-                          {f.role?.split(' (')[0] || 'N/A'}
+                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${(f.role as string)?.includes('Asha') ? 'bg-blue-50 text-blue-700' : 'bg-emerald-50 text-emerald-700'}`}>
+                          {(f.role as string)?.split(' (')[0] || 'N/A'}
                         </span>
                       </td>
                       <td className="p-4 text-sm text-gray-600 max-w-xs truncate" title={JSON.stringify(f.answers)}>

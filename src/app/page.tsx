@@ -378,10 +378,10 @@ export default function Home() {
               <div className="mt-auto pt-8">
                 <button
                   onClick={handleNext}
-                  disabled={!name.trim() || phone.length !== 10}
+                  disabled={isCheckingPhone || !name.trim() || phone.length !== 10}
                   className="w-full py-4 px-4 rounded-2xl shadow-lg shadow-pink-500/20 text-base font-semibold text-white bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-700 hover:to-rose-600 disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed transition-all transform hover:-translate-y-0.5 active:translate-y-0"
                 >
-                  Start Feedback
+                  {isCheckingPhone ? \'Checking...\' : \'Start Feedback\'}
                 </button>
               </div>
             </div>
