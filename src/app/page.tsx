@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import confetti from 'canvas-confetti';
+import Mascot from '@/components/Mascot';
 import { db } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp, query, where, getDocs } from 'firebase/firestore';
 
@@ -183,6 +184,24 @@ export default function Home() {
 
   const currentQuestions = role === 'Pregnant Woman (గర్భిణీ స్త్రీ)' ? pwQuestions : 
                            (role === 'Asha Worker (ఆశా వర్కర్)' || role === 'ANM') ? ashaQuestions : [];
+
+  // Calculate Mascot Emotion
+  let mascotEmotion = 'happy';
+  if (isSubmitted) {
+    mascotEmotion = 'excited';
+  } else if (currentStep > 1 && currentStep - 2 < currentQuestions.length) {
+    const q = currentQuestions[currentStep - 2];
+    const ans = answers[q.id] || '';
+    const sadKeywords = ['Difficult', 'Not', 'could not', 'Unable', 'No', 'కష్టంగా', 'కాదు', 'లేదు'];
+    const excitedKeywords = ['Easy', 'Very', 'Every day', 'Always', 'సులభంగా', 'ఎల్లప్పుడూ', 'చాలా'];
+    
+    if (ans === '1' || ans === '2' || sadKeywords.some(k => ans.includes(k))) {
+      mascotEmotion = 'sad';
+    } else if (ans === '4' || ans === '5' || excitedKeywords.some(k => ans.includes(k))) {
+      mascotEmotion = 'excited';
+    }
+  }
+
 
 
   // Total steps: Intro(0) + Role(1) + Questions(length)
@@ -589,6 +608,7 @@ export default function Home() {
         </div>
       </div>
       
+      <Mascot emotion={mascotEmotion} />
     </main>
   );
 }
