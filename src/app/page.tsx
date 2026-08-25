@@ -288,9 +288,9 @@ export default function Home() {
           <button 
             onClick={() => {
               setIsSubmitted(false);
-              setCurrentStep(0);
-              setName('');
-              setPhone('');
+              setCurrentStep(1);
+              
+              
               setRole('');
               setAnswers({});
             }}
