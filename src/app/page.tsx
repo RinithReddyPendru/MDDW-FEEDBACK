@@ -340,9 +340,17 @@ export default function Home() {
           {/* STEP 1: Role Selection */}
           {currentStep === 1 && (
             <div className="flex-grow flex flex-col justify-center animate-fade-in">
-              <h3 className="text-xl font-bold text-gray-900 mb-8 text-center tracking-tight">
-                3. ఈ క్రింది వారిలో మీరు ఎవరు?<br/><span className="text-sm text-blue-600 uppercase tracking-wide mt-2 block font-semibold">Which of the following are you?</span>
-              </h3>
+              <div className="text-center mb-8">
+              <h2 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-rose-500 tracking-tight mb-3">
+                Welcome / స్వాగతం
+              </h2>
+              <p className="text-gray-500 font-medium text-sm">Please select your role to start the feedback</p>
+            </div>
+            
+            <h3 className="text-lg font-bold text-gray-800 mb-6 text-center">
+              మీరు కిందివాటిలో ఎవరు? <br/>
+              <span className="text-sm text-pink-500 font-semibold mt-1 block">Which of the following are you?</span>
+            </h3>
               
               <div className="space-y-4">
                 {['Asha Worker (ఆశా వర్కర్)', 'ANM', 'Pregnant Woman (గర్భిణీ స్త్రీ)'].map((r) => (
