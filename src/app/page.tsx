@@ -170,9 +170,7 @@ export default function Home() {
   const [currentStep, setCurrentStep] = useState(1);
   
   // Form State
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [role, setRole] = useState('');
+      const [role, setRole] = useState('');
   const [answers, setAnswers] = useState<Record<string, string>>({});
   
   // UI State
