@@ -386,7 +386,7 @@ export default function Home() {
                     type="text"
                     id="name"
                     value={name}
-                    onChange={(e) => setName(e.target.value.replace(/[0-9]/g, ''))}
+                    onChange={(e) => setName(e.target.value)}
                     className="block w-full px-5 py-3.5 bg-white border border-gray-200 rounded-2xl shadow-sm focus:bg-white focus:ring-2 focus:ring-pink-400 focus:border-transparent text-black placeholder-gray-400 transition-all font-medium"
                     placeholder="Your full name"
                   />
