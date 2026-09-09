@@ -41,24 +41,38 @@ export default function AdminDashboard() {
   };
 
 
-  const handleDownloadCSV = () => {
-    if (feedbacks.length === 0) return;
+  const handleDownloadCSV = (targetGroup: 'ASHA' | 'PW') => {
+    const targetFeedbacks = feedbacks.filter(f => {
+      const roleStr = String(f.role || '');
+      if (targetGroup === 'ASHA') return roleStr.includes('Asha') || roleStr.includes('ANM');
+      if (targetGroup === 'PW') return roleStr.includes('Pregnant');
+      return false;
+    });
 
-    // Get all possible question IDs dynamically
+    if (targetFeedbacks.length === 0) {
+      alert(`No data found for ${targetGroup === 'ASHA' ? 'ASHA/ANM' : 'Pregnant Women'} yet.`);
+      return;
+    }
+
     const answerKeys = new Set<string>();
-    feedbacks.forEach(f => {
+    targetFeedbacks.forEach(f => {
       if (f.answers) {
         Object.keys(f.answers).forEach(k => answerKeys.add(k));
       }
     });
-    const dynamicHeaders = Array.from(answerKeys).sort();
+    
+    // Sort keys intelligently so q2 comes before q10
+    const dynamicHeaders = Array.from(answerKeys).sort((a, b) => {
+      const numA = parseInt(a.replace(/\D/g, '')) || 0;
+      const numB = parseInt(b.replace(/\D/g, '')) || 0;
+      return numA - numB;
+    });
 
     const headers = ['Date', 'Role', 'Name', 'Phone', ...dynamicHeaders];
-
     const csvRows = [];
     csvRows.push(headers.join(',')); // Header row
 
-    feedbacks.forEach(f => {
+    targetFeedbacks.forEach(f => {
       const dateStr = f.createdAt?.toDate ? f.createdAt.toDate().toLocaleDateString() : 'N/A';
       const role = `"${(f.role || '').replace(/"/g, '""')}"`;
       const name = `"${(f.name || '').replace(/"/g, '""')}"`;
@@ -80,7 +94,8 @@ export default function AdminDashboard() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.setAttribute('download', `JananiMitra_Feedback_${new Date().toLocaleDateString()}.csv`);
+    const fileNameGroup = targetGroup === 'ASHA' ? 'ASHA_ANM' : 'Pregnant_Women';
+    link.setAttribute('download', `JananiMitra_${fileNameGroup}_Feedback_${new Date().toLocaleDateString()}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -151,12 +166,16 @@ export default function AdminDashboard() {
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Feedback Analytics</h1>
-          <div className="flex space-x-3">
-            <button onClick={handleDownloadCSV} disabled={feedbacks.length === 0} className="px-4 py-2 bg-emerald-600 text-white shadow-sm rounded-lg hover:bg-emerald-700 font-medium disabled:opacity-50 transition-colors flex items-center">
+          <div className="flex flex-wrap gap-3 items-center justify-end">
+            <button onClick={() => handleDownloadCSV('ASHA')} disabled={feedbacks.length === 0} className="px-4 py-2 bg-blue-600 text-white shadow-sm rounded-lg hover:bg-blue-700 font-medium disabled:opacity-50 transition-colors flex items-center text-sm">
               <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-              Download CSV
+              ASHA / ANM CSV
             </button>
-            <button onClick={fetchFeedbacks} className="px-4 py-2 bg-white border border-gray-200 shadow-sm rounded-lg hover:bg-gray-50 font-medium transition-colors text-gray-700">
+            <button onClick={() => handleDownloadCSV('PW')} disabled={feedbacks.length === 0} className="px-4 py-2 bg-emerald-600 text-white shadow-sm rounded-lg hover:bg-emerald-700 font-medium disabled:opacity-50 transition-colors flex items-center text-sm">
+              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+              Pregnant Women CSV
+            </button>
+            <button onClick={fetchFeedbacks} className="px-4 py-2 bg-white border border-gray-200 shadow-sm rounded-lg hover:bg-gray-50 font-medium transition-colors text-gray-700 text-sm">
               Refresh Data
             </button>
           </div>
