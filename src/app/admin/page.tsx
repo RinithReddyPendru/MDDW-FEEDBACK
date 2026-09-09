@@ -40,6 +40,52 @@ export default function AdminDashboard() {
     }
   };
 
+
+  const handleDownloadCSV = () => {
+    if (feedbacks.length === 0) return;
+
+    // Get all possible question IDs dynamically
+    const answerKeys = new Set<string>();
+    feedbacks.forEach(f => {
+      if (f.answers) {
+        Object.keys(f.answers).forEach(k => answerKeys.add(k));
+      }
+    });
+    const dynamicHeaders = Array.from(answerKeys).sort();
+
+    const headers = ['Date', 'Role', 'Name', 'Phone', ...dynamicHeaders];
+
+    const csvRows = [];
+    csvRows.push(headers.join(',')); // Header row
+
+    feedbacks.forEach(f => {
+      const dateStr = f.createdAt?.toDate ? f.createdAt.toDate().toLocaleDateString() : 'N/A';
+      const role = `"${(f.role || '').replace(/"/g, '""')}"`;
+      const name = `"${(f.name || '').replace(/"/g, '""')}"`;
+      const phone = `"${(f.phone || '').replace(/"/g, '""')}"`;
+      
+      const row = [dateStr, role, name, phone];
+      
+      dynamicHeaders.forEach(key => {
+         let val = f.answers?.[key] || '';
+         val = val.replace(/"/g, '""'); // escape quotes
+         row.push(`"${val}"`);
+      });
+
+      csvRows.push(row.join(','));
+    });
+
+    const csvContent = csvRows.join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `JananiMitra_Feedback_${new Date().toLocaleDateString()}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   if (!isAuthenticated) {
     return (
       <main className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
@@ -89,9 +135,15 @@ export default function AdminDashboard() {
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Feedback Analytics</h1>
-          <button onClick={fetchFeedbacks} className="px-4 py-2 bg-white border border-gray-200 shadow-sm rounded-lg hover:bg-gray-50 font-medium">
-            Refresh Data
-          </button>
+          <div className="flex space-x-3">
+            <button onClick={handleDownloadCSV} disabled={feedbacks.length === 0} className="px-4 py-2 bg-emerald-600 text-white shadow-sm rounded-lg hover:bg-emerald-700 font-medium disabled:opacity-50 transition-colors flex items-center">
+              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+              Download CSV
+            </button>
+            <button onClick={fetchFeedbacks} className="px-4 py-2 bg-white border border-gray-200 shadow-sm rounded-lg hover:bg-gray-50 font-medium transition-colors text-gray-700">
+              Refresh Data
+            </button>
+          </div>
         </div>
 
         {/* Metrics Cards */}
