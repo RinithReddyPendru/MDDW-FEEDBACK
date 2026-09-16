@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { db } from '@/lib/firebase';
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from 'recharts';
@@ -11,8 +11,8 @@ const COLORS = ['#ec4899', '#8b5cf6', '#14b8a6', '#f59e0b', '#3b82f6', '#ef4444'
 
 
 export default function AdminDashboard() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [password, setPassword] = useState('');
+  
+  
   const [feedbacks, setFeedbacks] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [activeTab, setActiveTab] = useState<'ASHA' | 'PW'>('ASHA');
@@ -36,15 +36,7 @@ export default function AdminDashboard() {
     }
   };
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (password === 'admin123') { // Simple hardcoded password
-      setIsAuthenticated(true);
-      fetchFeedbacks();
-    } else {
-      alert('Incorrect password');
-    }
-  };
+
 
 
   const handleDownloadCSV = (targetGroup: 'ASHA' | 'PW') => {
@@ -107,45 +99,9 @@ export default function AdminDashboard() {
     document.body.removeChild(link);
   };
 
-  if (!isAuthenticated) {
-    return (
-      <main className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-rose-50 flex items-center justify-center p-6 relative overflow-hidden">
-        {/* Background decorative blobs */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute -top-24 -left-24 w-96 h-96 bg-pink-200/40 rounded-full blur-3xl mix-blend-multiply"></div>
-          <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-rose-200/40 rounded-full blur-3xl mix-blend-multiply"></div>
-        </div>
-
-        <div className="bg-white/80 backdrop-blur-xl p-10 rounded-[2.5rem] shadow-2xl shadow-pink-200/50 w-full max-w-md border border-pink-100 relative z-10">
-          <div className="flex justify-center mb-6">
-            <div className="w-16 h-16 bg-gradient-to-br from-pink-100 to-rose-100 rounded-full flex items-center justify-center shadow-inner">
-              <svg className="w-8 h-8 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-              </svg>
-            </div>
-          </div>
-          <h2 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-500 mb-2 text-center tracking-tight">Admin Access</h2>
-          <p className="text-gray-500 text-center mb-8 font-medium">Please enter your secure password</p>
-          
-          <form onSubmit={handleLogin} className="space-y-6">
-            <div>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="~T Admin Password"
-                className="w-full px-5 py-4 rounded-2xl border border-pink-100 bg-white/50 focus:bg-white focus:ring-2 focus:ring-pink-400 focus:border-transparent outline-none text-black transition-all shadow-sm font-medium"
-              />
-            </div>
-            <button type="submit" className="w-full py-4 bg-gradient-to-r from-pink-600 to-rose-500 text-white font-bold rounded-2xl hover:from-pink-700 hover:to-rose-600 transition-all shadow-lg shadow-pink-500/30 transform hover:-translate-y-0.5 active:translate-y-0 flex justify-center items-center">
-              Unlock Dashboard
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-            </button>
-          </form>
-        </div>
-      </main>
-    );
-  }
+  useEffect(() => {
+    fetchFeedbacks();
+  }, []);
 
   const totalResponses = feedbacks.length;
   const ashaCount = feedbacks.filter(f => (f.role as string)?.includes('Asha')).length;
