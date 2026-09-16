@@ -71,7 +71,7 @@ export default function AdminDashboard() {
     csvRows.push(headers.join(',')); // Header row
 
     targetFeedbacks.forEach(f => {
-      const dateStr = f.createdAt?.toDate ? f.createdAt.toDate().toLocaleDateString() : 'N/A';
+      const dateStr = f.createdAt?.toDate ? f.createdAt.toDate().toLocaleString('en-IN', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true }).toUpperCase() : 'N/A';
       const role = `"${(f.role || '').replace(/"/g, '""')}"`;
       const name = `"${(f.name || '').replace(/"/g, '""')}"`;
       const phone = `"${(f.phone || '').replace(/"/g, '""')}"`;
@@ -93,7 +93,7 @@ export default function AdminDashboard() {
     const link = document.createElement('a');
     link.href = url;
     const fileNameGroup = targetGroup === 'ASHA' ? 'ASHA_ANM' : 'Pregnant_Women';
-    link.setAttribute('download', `JananiMitra_${fileNameGroup}_Feedback_${new Date().toLocaleDateString()}.csv`);
+    link.setAttribute('download', `JananiMitra_${fileNameGroup}_Feedback_${new Date().toLocaleDateString('en-IN').replace(/\//g, '-')}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -258,7 +258,7 @@ export default function AdminDashboard() {
                   feedbacks.map((f) => (
                     <tr key={f.id} className="hover:bg-gray-50 transition-colors">
                       <td className="p-4 text-sm text-gray-500 whitespace-nowrap">
-                        {f.createdAt?.toDate ? f.createdAt.toDate().toLocaleDateString() : 'N/A'}
+                        {f.createdAt?.toDate ? f.createdAt.toDate().toLocaleString('en-IN', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true }).toUpperCase() : 'N/A'}
                       </td>
                       <td className="p-4 text-sm font-medium text-gray-900">{f.name || 'Anonymous'}</td>
                       <td className="p-4 text-sm text-gray-600">{f.phone || 'N/A'}</td>
