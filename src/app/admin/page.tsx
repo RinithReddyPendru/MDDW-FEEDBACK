@@ -4,12 +4,18 @@
 import { useState } from 'react';
 import { db } from '@/lib/firebase';
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import { ashaQuestions, pwQuestions } from '@/app/page';
+
+const COLORS = ['#ec4899', '#8b5cf6', '#14b8a6', '#f59e0b', '#3b82f6', '#ef4444'];
+
 
 export default function AdminDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [feedbacks, setFeedbacks] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [activeTab, setActiveTab] = useState<'ASHA' | 'PW'>('ASHA');
   
 
   const fetchFeedbacks = async () => {
@@ -201,7 +207,89 @@ export default function AdminDashboard() {
           </div>
         </div>
 
+        
+        {/* Analysis Tabs */}
+        <div className="mb-8">
+          <div className="flex space-x-4 border-b border-gray-200 mb-6 pb-2">
+            <button 
+              onClick={() => setActiveTab('ASHA')}
+              className={`pb-2 px-1 font-semibold text-lg transition-colors ${activeTab === 'ASHA' ? 'border-b-2 border-pink-500 text-pink-600' : 'text-gray-500 hover:text-gray-800'}`}
+            >
+              ASHA / ANM Analysis
+            </button>
+            <button 
+              onClick={() => setActiveTab('PW')}
+              className={`pb-2 px-1 font-semibold text-lg transition-colors ${activeTab === 'PW' ? 'border-b-2 border-emerald-500 text-emerald-600' : 'text-gray-500 hover:text-gray-800'}`}
+            >
+              Pregnant Women Analysis
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {(activeTab === 'ASHA' ? ashaQuestions : pwQuestions).map((q, idx) => {
+              // Aggregate data
+              const counts: Record<string, number> = {};
+              feedbacks.forEach(f => {
+                const roleStr = String(f.role || '');
+                if (activeTab === 'ASHA' && !(roleStr.includes('Asha') || roleStr.includes('ANM'))) return;
+                if (activeTab === 'PW' && !roleStr.includes('Pregnant')) return;
+                
+                if (f.answers && f.answers[q.id]) {
+                  const ans = f.answers[q.id];
+                  counts[ans] = (counts[ans] || 0) + 1;
+                }
+              });
+
+              const chartData = Object.keys(counts).map(key => ({
+                name: key.length > 40 ? key.substring(0, 40) + '...' : key,
+                fullName: key,
+                value: counts[key]
+              }));
+
+              return (
+                <div key={q.id} className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col">
+                  <h3 className="text-gray-800 font-semibold mb-4 text-sm whitespace-pre-wrap">{q.text}</h3>
+                  {chartData.length > 0 ? (
+                    <div className="flex-grow h-64">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <PieChart>
+                          <Pie
+                            data={chartData}
+                            cx="50%"
+                            cy="50%"
+                            innerRadius={60}
+                            outerRadius={80}
+                            paddingAngle={5}
+                            dataKey="value"
+                          >
+                            {chartData.map((entry, index) => (
+                              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            ))}
+                          </Pie>
+                          <Tooltip 
+                            formatter={(value: number) => [`${value} responses`, 'Count']}
+                            labelFormatter={(label, payload) => {
+                               if (payload && payload.length > 0) return payload[0].payload.fullName;
+                               return label;
+                            }}
+                          />
+                          <Legend wrapperStyle={{ fontSize: '12px' }} />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </div>
+                  ) : (
+                    <div className="flex-grow flex items-center justify-center text-gray-400 italic text-sm">
+                      No data available yet
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Data Table */}
+
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">

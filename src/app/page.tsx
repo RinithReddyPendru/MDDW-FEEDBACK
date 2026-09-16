@@ -5,14 +5,14 @@ import confetti from 'canvas-confetti';
 import { db } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
-type Question = {
+export type Question = {
   id: string;
   text: string;
   type: 'radio' | 'text' | 'rating';
   options?: string[];
 };
 
-const pwQuestions: Question[] = [
+export const pwQuestions: Question[] = [
   {
     id: 'pw_q1',
     text: `1. జననీ మిత్ర యాప్లో రిజిస్ట్రేషన్ ప్రక్రియ సులభంగా ఉందా?
@@ -98,7 +98,7 @@ Rate your overall experience with the Janani Mitra app (Out of 5 stars):`,
   }
 ];
 
-const ashaQuestions: Question[] = [
+export const ashaQuestions: Question[] = [
   {
     id: 'asha_q1',
     text: `1. ఒక కొత్త తల్లిని రిజిస్టర్ చేయడానికి మీకు ఎంత సమయం పడుతుంది?\nHow long does it take you to register one new mother?`,
