@@ -108,21 +108,7 @@ export default function AdminDashboard() {
   const anmCount = feedbacks.filter(f => (f.role as string)?.includes('ANM')).length;
   const pwCount = feedbacks.filter(f => (f.role as string)?.includes('Pregnant')).length;
   
-  // Calculate average rating (assuming q5 or q11 is the rating id, let's look for any rating answer)
-  let totalRating = 0;
-  let ratingCount = 0;
-  feedbacks.forEach(f => {
-    if (f.answers) {
-      Object.values(f.answers as Record<string, string>).forEach((val: string) => {
-        const num = parseInt(val);
-        if (!isNaN(num) && num >= 1 && num <= 5 && val.length === 1) { // Basic heuristic for rating
-          totalRating += num;
-          ratingCount++;
-        }
-      });
-    }
-  });
-  const avgRating = ratingCount > 0 ? (totalRating / ratingCount).toFixed(1) : 'N/A';
+  
 
   return (
     <main className="min-h-screen bg-gray-50 p-4 sm:p-8">
