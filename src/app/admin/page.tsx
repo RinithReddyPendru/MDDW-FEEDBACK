@@ -226,7 +226,7 @@ export default function AdminDashboard() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {(activeTab === 'ASHA' ? ashaQuestions : pwQuestions).map((q, idx) => {
+            {(activeTab === 'ASHA' ? ashaQuestions : pwQuestions).map((q) => {
               // Aggregate data
               const counts: Record<string, number> = {};
               feedbacks.forEach(f => {

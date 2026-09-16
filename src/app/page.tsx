@@ -5,7 +5,7 @@ import confetti from 'canvas-confetti';
 import { db } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
-import { Question, pwQuestions, ashaQuestions } from '@/lib/questions';
+import { pwQuestions, ashaQuestions } from '@/lib/questions';
 
 export default function Home() {
   const [currentStep, setCurrentStep] = useState(1);
