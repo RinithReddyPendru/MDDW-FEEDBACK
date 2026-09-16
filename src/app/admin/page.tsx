@@ -105,6 +105,7 @@ export default function AdminDashboard() {
 
   const totalResponses = feedbacks.length;
   const ashaCount = feedbacks.filter(f => (f.role as string)?.includes('Asha')).length;
+  const anmCount = feedbacks.filter(f => (f.role as string)?.includes('ANM')).length;
   const pwCount = feedbacks.filter(f => (f.role as string)?.includes('Pregnant')).length;
   
   // Calculate average rating (assuming q5 or q11 is the rating id, let's look for any rating answer)
@@ -150,11 +151,11 @@ export default function AdminDashboard() {
             <p className="text-4xl font-bold text-gray-900">{totalResponses}</p>
           </div>
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-            <p className="text-sm text-gray-500 font-semibold uppercase tracking-wider mb-1">Average Rating</p>
-            <p className="text-4xl font-bold text-pink-600">{avgRating} <span className="text-2xl text-pink-300">★</span></p>
+            <p className="text-sm text-gray-500 font-semibold uppercase tracking-wider mb-1">ANM Workers</p>
+            <p className="text-4xl font-bold text-purple-600">{anmCount}</p>
           </div>
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-            <p className="text-sm text-gray-500 font-semibold uppercase tracking-wider mb-1">ASHA / ANM</p>
+            <p className="text-sm text-gray-500 font-semibold uppercase tracking-wider mb-1">ASHA Workers</p>
             <p className="text-4xl font-bold text-blue-600">{ashaCount}</p>
           </div>
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
