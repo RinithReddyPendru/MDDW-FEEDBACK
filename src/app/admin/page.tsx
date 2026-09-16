@@ -71,7 +71,7 @@ export default function AdminDashboard() {
     csvRows.push(headers.join(',')); // Header row
 
     targetFeedbacks.forEach(f => {
-      const dateStr = f.createdAt?.toDate ? f.createdAt.toDate().toLocaleString('en-IN', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true }).toUpperCase() : 'N/A';
+      const dateStr = f.createdAt?.toDate ? f.createdAt.toDate().toLocaleDateString('en-IN', { day: '2-digit', month: '2-digit', year: 'numeric' }) : 'N/A';
       const role = `"${(f.role || '').replace(/"/g, '""')}"`;
       const name = `"${(f.name || '').replace(/"/g, '""')}"`;
       const phone = `"${(f.phone || '').replace(/"/g, '""')}"`;
@@ -258,7 +258,7 @@ export default function AdminDashboard() {
                   feedbacks.map((f) => (
                     <tr key={f.id} className="hover:bg-gray-50 transition-colors">
                       <td className="p-4 text-sm text-gray-500 whitespace-nowrap">
-                        {f.createdAt?.toDate ? f.createdAt.toDate().toLocaleString('en-IN', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true }).toUpperCase() : 'N/A'}
+                        {f.createdAt?.toDate ? f.createdAt.toDate().toLocaleDateString('en-IN', { day: '2-digit', month: '2-digit', year: 'numeric' }) : 'N/A'}
                       </td>
                       <td className="p-4 text-sm font-medium text-gray-900">{f.name || 'Anonymous'}</td>
                       <td className="p-4 text-sm text-gray-600">{f.phone || 'N/A'}</td>
