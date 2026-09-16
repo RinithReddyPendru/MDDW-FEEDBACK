@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { db } from '@/lib/firebase';
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from 'recharts';
-import { ashaQuestions, pwQuestions } from '@/app/page';
+import { ashaQuestions, pwQuestions } from '@/lib/questions';
 
 const COLORS = ['#ec4899', '#8b5cf6', '#14b8a6', '#f59e0b', '#3b82f6', '#ef4444'];
 
