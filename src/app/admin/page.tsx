@@ -267,7 +267,7 @@ export default function AdminDashboard() {
                             ))}
                           </Pie>
                           <Tooltip 
-                            formatter={(value: number) => [`${value} responses`, 'Count']}
+                            formatter={(value: any) => [`${value} responses`, 'Count']}
                             labelFormatter={(label, payload) => {
                                if (payload && payload.length > 0) return payload[0].payload.fullName;
                                return label;
